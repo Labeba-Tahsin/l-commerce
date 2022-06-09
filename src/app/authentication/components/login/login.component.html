@@ -1,0 +1,31 @@
+<div class="container vh-100">
+  <div class="row justify-content-center h-100">
+    <div class="card my-auto shadow w-50">
+      <div class="card-body px-5">
+        <div class="text-center">
+
+        </div>
+        <div class="text-center">
+          <h2>Welcome</h2>
+        </div>
+        <p style="color: lightslategray; text-align: center;">Please enter your login
+          details</p>
+        <form [formGroup]="loginForm" class="mx-2" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <input type="email" id="email" placeholder="Email" class="form-control py-2" formControlName="email"
+              name="email" />
+          </div>
+          <div class="form-group mb-3">
+            <input type="password" id="password" placeholder="Password" class="form-control py-2"
+              formControlName="password" name="password" />
+          </div>
+          <input type="submit" class="btn btn-primary w-100 py-2 mb-1" value="Login" name="">
+        </form>
+      </div>
+      <div class="card-footer text-center py-4 mb-1">
+        <a routerLink="../products">products</a>
+      </div>
+    </div>
+  </div>
+</div>
+^6.1.1",
