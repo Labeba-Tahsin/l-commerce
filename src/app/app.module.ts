@@ -8,7 +8,7 @@ import { AuthenticationModule } from "../app/authentication/authentication.modul
 import { SharedModule } from "../app/shared/shared.module";
 import { ProductsModule } from "../app/products/products.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     AuthenticationModule,
     SharedModule,

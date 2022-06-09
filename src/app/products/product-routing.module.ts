@@ -21,7 +21,6 @@ const routes: Routes = [
         component: PaymentComponent
       },
       { path: "", redirectTo: "/product", pathMatch: "full" },
-      { path: "", redirectTo: "/product", pathMatch: "full" },
     ]
   }
 ];
