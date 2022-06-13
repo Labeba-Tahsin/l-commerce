@@ -17,6 +17,10 @@ import { setLoadingSpinner } from '../../../shared/store/shared.actions';
 export class ProductListComponent implements OnInit {
 
   products: any;
+  showProducts: any;
+  category: any;
+  selectedCat: string = "all";
+
   private readonly notifier: NotifierService;
 
   constructor(
@@ -32,10 +36,16 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe(res => {
 
       this.products = res;
+      this.showProducts = res;
+      if (this.products.length > 0) {
+        this.category = this.products.map(function (value: Product) { return value.category })
+          .filter((v: any, i: any, a: any) => a.indexOf(v) === i);
+      }
       this.store.dispatch(setLoadingSpinner({ status: false }));
 
     })
   }
+
 
   star(val: number, star: boolean): number[] {
     if (star) return Array(Math.floor(val));
@@ -46,6 +56,16 @@ export class ProductListComponent implements OnInit {
     this.store.dispatch(addToCart({ product: product, id: uuidv4(), count: 1 }));
     this.notifier.notify("success", "Ádded to Cart Successfully");
 
+  }
+
+  productFilter(category?: string) {
+    if (category) {
+      this.showProducts = this.products.filter((x: any) => { if (x.category === category) { return x } })
+      this.selectedCat = category;
+    } else {
+      this.showProducts = this.products;
+      this.selectedCat = 'all';
+    }
   }
 
 }

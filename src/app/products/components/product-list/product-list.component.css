@@ -1,0 +1,7 @@
+.active-nav {
+  color: #0a58ca !important;
+}
+
+.nav-item a {
+  cursor: pointer;
+}
