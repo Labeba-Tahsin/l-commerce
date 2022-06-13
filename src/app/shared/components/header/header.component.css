@@ -1,0 +1,12 @@
+.navbar-nav {
+  margin-left: auto;
+  padding-right: 40px;
+}
+
+li.nav-item {
+  margin: 0px 10px;
+}
+
+.p-left {
+  padding-left: 10px !important;
+}

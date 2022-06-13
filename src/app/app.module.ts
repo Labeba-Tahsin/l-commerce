@@ -9,7 +9,12 @@ import { SharedModule } from "../app/shared/shared.module";
 import { ProductsModule } from "../app/products/products.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AppReducer } from './app-state';
+import { NotifierModule } from 'angular-notifier';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +26,23 @@ import { HttpClientModule } from '@angular/common/http';
     AuthenticationModule,
     SharedModule,
     ProductsModule,
-    NgbModule
+    NgbModule,
+    [NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: 'right'
+        },
+        vertical: {
+          position: 'top'
+        }
+      },
+      behaviour: {
+        autoHide: 3000
+      }
+    })],
+    StoreModule.forRoot(AppReducer),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]

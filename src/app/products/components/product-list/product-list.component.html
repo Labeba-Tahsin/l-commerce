@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-4 mb-3" *ngFor="let product of products">
       <div class="card">
         <img class="card-img-top product-image" src={{product.image}} alt="Card image cap">
@@ -7,7 +7,19 @@
           <h5 class="card-title">{{product.title}}</h5>
           <p class="card-text">{{ (product.description.length>50)? (product.description |
             slice:0:50)+' ...':(product.description)}}</p>
-          <a href="#" class="btn btn-primary">Add to Cart</a>
+          <div class="row">
+            <div class="col-md-8">
+              <i class="fa fa-star text-warning" *ngFor="let item of star(product.rating?.rate,true)"
+                aria-hidden="true"></i>
+              <i class="far fa-star text-warning" *ngFor="let item of star(product.rating?.rate,false)"
+                aria-hidden="true"></i>
+              <br>
+              <h3 class="pt-2">{{product.price}}$</h3>
+            </div>
+            <div class="col-md-4">
+              <button type="button" (click)="addCart(product)" class="btn btn-primary">Add to Cart</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

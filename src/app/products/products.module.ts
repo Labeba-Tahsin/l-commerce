@@ -7,6 +7,10 @@ import { RouterModule } from '@angular/router';
 import { ProductsRoutingModule } from './product-routing.module';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { Store, StoreModule } from '@ngrx/store';
+import { CartReducer } from './store/cart.reducer';
+import { CART_STATE_NAME } from './store/cart.selectors';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,9 @@ import { PaymentComponent } from './components/payment/payment.component';
   imports: [
     CommonModule,
     RouterModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    SharedModule,
+    StoreModule.forFeature(CART_STATE_NAME, CartReducer)
   ],
   exports: [
     ProductDashboardComponent

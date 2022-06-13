@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar navbar-expand-sm bg-dark">
+    <h1 class="px-5 text-info">Lcommerce</h1>
+    <ul class="navbar-nav mr-4">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/products/product-list">
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/products/cart">
+          <i class="fas fa-shopping-cart"></i><span class="p-left">Cart</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-info" (click)="loginUser()"
+          *ngIf="!(isAuthenticated$ | async)">Login</button>
+        <button type="button" class="btn btn-outline-info" (click)="logoutUser()"
+          *ngIf="isAuthenticated$ | async">Logout</button>
+      </li>
+    </ul>
+  </nav>
+</header>
